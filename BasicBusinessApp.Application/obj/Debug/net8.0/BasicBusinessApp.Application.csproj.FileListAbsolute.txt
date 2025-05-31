@@ -1,0 +1,15 @@
+C:\repos\BasicBusinessApp\BasicBusinessApp.Application\bin\Debug\net8.0\BasicBusinessApp.Application.deps.json
+C:\repos\BasicBusinessApp\BasicBusinessApp.Application\bin\Debug\net8.0\BasicBusinessApp.Application.dll
+C:\repos\BasicBusinessApp\BasicBusinessApp.Application\bin\Debug\net8.0\BasicBusinessApp.Application.pdb
+C:\repos\BasicBusinessApp\BasicBusinessApp.Application\obj\Debug\net8.0\BasicBusinessApp.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\repos\BasicBusinessApp\BasicBusinessApp.Application\obj\Debug\net8.0\BasicBusinessApp.Application.AssemblyInfoInputs.cache
+C:\repos\BasicBusinessApp\BasicBusinessApp.Application\obj\Debug\net8.0\BasicBusinessApp.Application.AssemblyInfo.cs
+C:\repos\BasicBusinessApp\BasicBusinessApp.Application\obj\Debug\net8.0\BasicBusinessApp.Application.csproj.CoreCompileInputs.cache
+C:\repos\BasicBusinessApp\BasicBusinessApp.Application\obj\Debug\net8.0\BasicBusinessApp.Application.dll
+C:\repos\BasicBusinessApp\BasicBusinessApp.Application\obj\Debug\net8.0\refint\BasicBusinessApp.Application.dll
+C:\repos\BasicBusinessApp\BasicBusinessApp.Application\obj\Debug\net8.0\BasicBusinessApp.Application.pdb
+C:\repos\BasicBusinessApp\BasicBusinessApp.Application\obj\Debug\net8.0\ref\BasicBusinessApp.Application.dll
+C:\repos\BasicBusinessApp\BasicBusinessApp.Application\bin\Debug\net8.0\BasicBusinessApp.Domain.dll
+C:\repos\BasicBusinessApp\BasicBusinessApp.Application\bin\Debug\net8.0\BasicBusinessApp.Domain.pdb
+C:\repos\BasicBusinessApp\BasicBusinessApp.Application\obj\Debug\net8.0\BasicBusinessApp.Application.csproj.AssemblyReference.cache
+C:\repos\BasicBusinessApp\BasicBusinessApp.Application\obj\Debug\net8.0\BasicBus.A28F3370.Up2Date

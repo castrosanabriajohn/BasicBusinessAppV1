@@ -1,0 +1,17 @@
+C:\repos\BasicBusinessApp\BasicBusinessApp.Infrastructure\bin\Debug\net8.0\BasicBusinessApp.Infrastructure.deps.json
+C:\repos\BasicBusinessApp\BasicBusinessApp.Infrastructure\bin\Debug\net8.0\BasicBusinessApp.Infrastructure.dll
+C:\repos\BasicBusinessApp\BasicBusinessApp.Infrastructure\bin\Debug\net8.0\BasicBusinessApp.Infrastructure.pdb
+C:\repos\BasicBusinessApp\BasicBusinessApp.Infrastructure\obj\Debug\net8.0\BasicBusinessApp.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\repos\BasicBusinessApp\BasicBusinessApp.Infrastructure\obj\Debug\net8.0\BasicBusinessApp.Infrastructure.AssemblyInfoInputs.cache
+C:\repos\BasicBusinessApp\BasicBusinessApp.Infrastructure\obj\Debug\net8.0\BasicBusinessApp.Infrastructure.AssemblyInfo.cs
+C:\repos\BasicBusinessApp\BasicBusinessApp.Infrastructure\obj\Debug\net8.0\BasicBusinessApp.Infrastructure.csproj.CoreCompileInputs.cache
+C:\repos\BasicBusinessApp\BasicBusinessApp.Infrastructure\obj\Debug\net8.0\BasicBusinessApp.Infrastructure.dll
+C:\repos\BasicBusinessApp\BasicBusinessApp.Infrastructure\obj\Debug\net8.0\refint\BasicBusinessApp.Infrastructure.dll
+C:\repos\BasicBusinessApp\BasicBusinessApp.Infrastructure\obj\Debug\net8.0\BasicBusinessApp.Infrastructure.pdb
+C:\repos\BasicBusinessApp\BasicBusinessApp.Infrastructure\obj\Debug\net8.0\ref\BasicBusinessApp.Infrastructure.dll
+C:\repos\BasicBusinessApp\BasicBusinessApp.Infrastructure\bin\Debug\net8.0\BasicBusinessApp.Application.dll
+C:\repos\BasicBusinessApp\BasicBusinessApp.Infrastructure\bin\Debug\net8.0\BasicBusinessApp.Domain.dll
+C:\repos\BasicBusinessApp\BasicBusinessApp.Infrastructure\bin\Debug\net8.0\BasicBusinessApp.Application.pdb
+C:\repos\BasicBusinessApp\BasicBusinessApp.Infrastructure\bin\Debug\net8.0\BasicBusinessApp.Domain.pdb
+C:\repos\BasicBusinessApp\BasicBusinessApp.Infrastructure\obj\Debug\net8.0\BasicBusinessApp.Infrastructure.csproj.AssemblyReference.cache
+C:\repos\BasicBusinessApp\BasicBusinessApp.Infrastructure\obj\Debug\net8.0\BasicBus.68DF5D1D.Up2Date
