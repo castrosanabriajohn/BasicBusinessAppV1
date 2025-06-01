@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Options;
 
-namespace BasicBusinessApp.Api.Errors;
+namespace BasicBusinessApp.Api.Common.Errors;
 
 public class DetailsFactory : ProblemDetailsFactory
 {
