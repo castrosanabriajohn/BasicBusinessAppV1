@@ -4,7 +4,7 @@ namespace BasicBusinessApp.Application.Services.Authentication;
 
 public class AuthenticationService : IAuthenticationService
 {
-  public readonly IJwtTokenGenerator _jwtTokenGenerator;
+  private readonly IJwtTokenGenerator _jwtTokenGenerator;
 
   public AuthenticationService(IJwtTokenGenerator jwtTokenGenerator) => _jwtTokenGenerator = jwtTokenGenerator;
 
@@ -20,7 +20,7 @@ public class AuthenticationService : IAuthenticationService
 
     // create jwt token
     var token = _jwtTokenGenerator.GenerateToken(Guid.NewGuid(), "firstName", "lastName");
-    Guid userId = Guid.NewGuid();
+    var userId = Guid.NewGuid();
     return new AuthenticationResult(userId, firstName, lastName, email, token);
   }
 }
