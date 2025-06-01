@@ -1,7 +1,9 @@
+using BasicBusinessApp.Application.Common.Errors;
 using BasicBusinessApp.Application.Common.Interfaces.Authentication;
 using BasicBusinessApp.Application.Common.Interfaces.Persistence;
 using BasicBusinessApp.Common.Errors;
 using BasicBusinessApp.Domain.Entities;
+using OneOf;
 
 namespace BasicBusinessApp.Application.Services.Authentication;
 
@@ -32,11 +34,11 @@ public class AuthenticationService : IAuthenticationService
 
     return new AuthenticationResult(user,token);
   }
-  public AuthenticationResult Register(string firstName, string lastName, string email, string password)
+  public OneOf<AuthenticationResult, DuplicateEmailError> Register(string firstName, string lastName, string email, string password)
   {
     // check if user alreay exists
     if(_userRepository.GetUserByEmail(email) is not null) {
-      throw new DuplicateEmailException();
+      return new DuplicateEmailError();
     }
     // create user and generate unique id
     var user = new User

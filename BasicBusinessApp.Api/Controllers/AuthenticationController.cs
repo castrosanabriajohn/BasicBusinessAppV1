@@ -1,6 +1,8 @@
+using BasicBusinessApp.Application.Common.Errors;
 using BasicBusinessApp.Application.Services.Authentication;
 using BasicBusinessApp.Contracts.Authentication;
 using Microsoft.AspNetCore.Mvc;
+using OneOf;
 
 namespace BasicBusinessApp.Api.Controllers;
 
@@ -14,19 +16,15 @@ public class AuthenticationController : ControllerBase
   [HttpPost("register")]
   public IActionResult Register(RegisterRequest request)
   {
-    var authResult = _authenticationService.Register(
-      request.FirstName,
-      request.LastName,
-      request.Email,
-      request.Password);
-    var response = new AuthenticationResponse(
-      authResult.User.Id,
-      authResult.User.FirstName,
-      authResult.User.LastName,
-      authResult.User.Email,
-      authResult.Token
+    OneOf<AuthenticationResult, DuplicateEmailError> registerResult = _authenticationService.Register(
+    request.FirstName,
+    request.LastName,
+    request.Email,
+    request.Password);
+    return registerResult.Match(
+      authResult => Ok(MapAuthResult(authResult)),
+      _ => Problem(statusCode: StatusCodes.Status409Conflict, title: "Email already in use")
     );
-    return Ok(response);
   }
 
   [HttpPost("login")]
@@ -44,5 +42,14 @@ public class AuthenticationController : ControllerBase
       authResult.Token
     );
     return Ok(response);
+  }
+  private static AuthenticationResponse MapAuthResult(AuthenticationResult authResult) {
+    return new AuthenticationResponse(
+      authResult.User.Id,
+      authResult.User.FirstName,
+      authResult.User.LastName,
+      authResult.User.Email,
+      authResult.Token
+    );
   }
 }
