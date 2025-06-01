@@ -1,5 +1,6 @@
 using BasicBusinessApp.Application.Common.Interfaces.Authentication;
 using BasicBusinessApp.Application.Common.Interfaces.Persistence;
+using BasicBusinessApp.Common.Errors;
 using BasicBusinessApp.Domain.Entities;
 
 namespace BasicBusinessApp.Application.Services.Authentication;
@@ -35,7 +36,7 @@ public class AuthenticationService : IAuthenticationService
   {
     // check if user alreay exists
     if(_userRepository.GetUserByEmail(email) is not null) {
-      throw new Exception("User with given email already exists");
+      throw new DuplicateEmailException();
     }
     // create user and generate unique id
     var user = new User
