@@ -12,7 +12,7 @@ public class ErrorsContorollers : ControllerBase
     var exception = HttpContext.Features.Get<IExceptionHandlerFeature>()?.Error;
     var (statusCode, message) = exception switch
     {
-      DuplicateEmailException => (StatusCodes.Status409Conflict, "Email already exists"),
+      IServiceException serviceException => ((int)serviceException.StatusCode, serviceException.ErrorMessage),
       _ => (StatusCodes.Status500InternalServerError, "An error occurred while processing your request.")
     };
     return Problem(statusCode: statusCode, title: message);
