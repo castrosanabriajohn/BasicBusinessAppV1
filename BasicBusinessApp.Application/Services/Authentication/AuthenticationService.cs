@@ -3,7 +3,7 @@ using BasicBusinessApp.Application.Common.Interfaces.Authentication;
 using BasicBusinessApp.Application.Common.Interfaces.Persistence;
 using BasicBusinessApp.Common.Errors;
 using BasicBusinessApp.Domain.Entities;
-using OneOf;
+using FluentResults;
 
 namespace BasicBusinessApp.Application.Services.Authentication;
 
@@ -34,11 +34,11 @@ public class AuthenticationService : IAuthenticationService
 
     return new AuthenticationResult(user,token);
   }
-  public OneOf<AuthenticationResult, IError> Register(string firstName, string lastName, string email, string password)
+  public Result<AuthenticationResult> Register(string firstName, string lastName, string email, string password)
   {
     // check if user alreay exists
     if(_userRepository.GetUserByEmail(email) is not null) {
-      return new DuplicateEmailError();
+      return Result.Fail<AuthenticationResult>( new[] { new DuplicateEmailError() });
     }
     // create user and generate unique id
     var user = new User

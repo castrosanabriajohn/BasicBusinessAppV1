@@ -1,10 +1,13 @@
 using System.Net;
+using FluentResults;
 
 namespace BasicBusinessApp.Application.Common.Errors;
 
-public record struct DuplicateEmailError() : IError
+public class DuplicateEmailError() : IError
 {
-  public HttpStatusCode StatusCode => HttpStatusCode.Conflict;
+  public List<IError> Reasons => throw new NotImplementedException();
 
-  public string ErrorMessage => "err";
+  public string Message => throw new NotImplementedException();
+
+  public Dictionary<string, object> Metadata => throw new NotImplementedException();
 }
