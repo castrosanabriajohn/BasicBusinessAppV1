@@ -3,6 +3,7 @@ using BasicBusinessApp.Application.Services.Authentication;
 using BasicBusinessApp.Contracts.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using OneOf;
+using OneOf.Types;
 
 namespace BasicBusinessApp.Api.Controllers;
 
@@ -16,14 +17,14 @@ public class AuthenticationController : ControllerBase
   [HttpPost("register")]
   public IActionResult Register(RegisterRequest request)
   {
-    OneOf<AuthenticationResult, DuplicateEmailError> registerResult = _authenticationService.Register(
+    OneOf<AuthenticationResult, IError> registerResult = _authenticationService.Register(
     request.FirstName,
     request.LastName,
     request.Email,
     request.Password);
     return registerResult.Match(
       authResult => Ok(MapAuthResult(authResult)),
-      _ => Problem(statusCode: StatusCodes.Status409Conflict, title: "Email already in use")
+      error => Problem(statusCode: (int)error.StatusCode, title: "Email already in use")
     );
   }
 
