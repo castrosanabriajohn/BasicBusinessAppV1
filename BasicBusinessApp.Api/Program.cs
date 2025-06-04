@@ -1,15 +1,13 @@
-using BasicBusinessApp.Api.Common.Errors;
+using BasicBusinessApp.Api;
 using BasicBusinessApp.Application;
 using BasicBusinessApp.Infrastructure;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 {
     builder.Services
+        .AddPresentation()
         .AddApplication()
         .AddInfrastructure(builder.Configuration);
-    builder.Services.AddControllers();
-    builder.Services.AddSingleton<ProblemDetailsFactory, DetailsFactory>();
 }
 
 var app = builder.Build();
