@@ -3,19 +3,29 @@ using BasicBusinessApp.Application.Services.Authentication;
 using BasicBusinessApp.Contracts.Authentication;
 using ErrorOr;
 using Microsoft.AspNetCore.Mvc;
+using BasicBusinessApp.Application.Services.Authentication.Common;
+using BasicBusinessApp.Application.Services.Authentication.Commands;
+using BasicBusinessApp.Application.Services.Authentication.Queries;
 
 namespace BasicBusinessApp.Api.Controllers;
 
 [Route("auth")]
 public class AuthenticationController : ApiController
 {
-  private readonly IAuthenticationService _authenticationService;
-  public AuthenticationController(IAuthenticationService authenticationService) => _authenticationService = authenticationService;
+  private readonly IAuthenticationCommandService _authenticationCommandService;
+  private readonly IAuthenticationQueryService _authenticationQueryService;
+  public AuthenticationController(
+    IAuthenticationCommandService authenticationCommandService,
+    IAuthenticationQueryService authenticationQueryService)
+  {
+    _authenticationCommandService = authenticationCommandService;
+    _authenticationQueryService = authenticationQueryService;
+  }
 
   [HttpPost("register")]
   public IActionResult Register(RegisterRequest request)
   {
-    ErrorOr<AuthenticationResult> registerResult = _authenticationService.Register(
+    ErrorOr<AuthenticationResult> registerResult = _authenticationCommandService.Register(
      request.FirstName,
      request.LastName,
      request.Email,
@@ -29,7 +39,7 @@ public class AuthenticationController : ApiController
   [HttpPost("login")]
   public IActionResult Login(LoginRequest request)
   {
-    var authResult = _authenticationService.Login(
+    var authResult = _authenticationQueryService.Login(
       request.Email,
       request.Password
     );

@@ -1,11 +1,11 @@
 using BasicBusinessApp.Application.Common.Errors;
+using BasicBusinessApp.Application.Services.Authentication.Common;
 using ErrorOr;
 using FluentResults;
 
-namespace BasicBusinessApp.Application.Services.Authentication;
+namespace BasicBusinessApp.Application.Services.Authentication.Commands;
 
-public interface IAuthenticationService
+public interface IAuthenticationCommandService
 {
-    ErrorOr<AuthenticationResult> Login(string email, string password);
     ErrorOr<AuthenticationResult> Register(string firstName, string lastName, string email, string password);
 }
