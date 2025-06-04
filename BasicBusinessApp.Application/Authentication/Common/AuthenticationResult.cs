@@ -1,6 +1,6 @@
 using BasicBusinessApp.Domain.Entities;
 
-namespace BasicBusinessApp.Application.Services.Authentication.Common;
+namespace BasicBusinessApp.Application.Authentication.Common;
 
 public record AuthenticationResult(
     User User,
