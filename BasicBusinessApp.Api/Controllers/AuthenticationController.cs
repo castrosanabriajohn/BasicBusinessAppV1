@@ -1,13 +1,13 @@
-using BasicBusinessApp.Application.Common.Errors;
+using BasicBusinessApp.Domain.Common;
 using BasicBusinessApp.Application.Services.Authentication;
 using BasicBusinessApp.Contracts.Authentication;
+using ErrorOr;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BasicBusinessApp.Api.Controllers;
 
-[ApiController]
 [Route("auth")]
-public class AuthenticationController : ControllerBase
+public class AuthenticationController : ApiController
 {
   private readonly IAuthenticationService _authenticationService;
   public AuthenticationController(IAuthenticationService authenticationService) => _authenticationService = authenticationService;
@@ -15,22 +15,15 @@ public class AuthenticationController : ControllerBase
   [HttpPost("register")]
   public IActionResult Register(RegisterRequest request)
   {
-    var registerResult = _authenticationService.Register(
+    ErrorOr<AuthenticationResult> registerResult = _authenticationService.Register(
      request.FirstName,
      request.LastName,
      request.Email,
      request.Password);
-    if (registerResult.IsSuccess)
-    {
-      return Ok(MapAuthResult(registerResult.Value));
-    }
-    var firstError = registerResult.Errors[0];
-
-    if (firstError is DuplicateEmailError)
-    {
-      return Problem(statusCode: StatusCodes.Status409Conflict, title: "Email already exists");
-    }
-    return Problem();
+    return registerResult.Match(
+      registerResult => Ok(MapAuthResult(registerResult)),
+      errors => Problem(errors)
+    );
   }
 
   [HttpPost("login")]
@@ -40,14 +33,17 @@ public class AuthenticationController : ControllerBase
       request.Email,
       request.Password
     );
-    var response = new AuthenticationResponse(
-      authResult.User.Id,
-      authResult.User.FirstName,
-      authResult.User.LastName,
-      authResult.User.Email,
-      authResult.Token
-    );
-    return Ok(response);
+    if (authResult.IsError && authResult.FirstError == Errors.Authentication.InvalidCredentials)
+    { 
+      return Problem(
+        statusCode: StatusCodes.Status401Unauthorized,
+        title: authResult.FirstError.Description
+      );
+    }
+    return authResult.Match(
+        authResult => Ok(MapAuthResult(authResult)),
+        errors => Problem(errors)
+      );
   }
   private static AuthenticationResponse MapAuthResult(AuthenticationResult authResult) {
     return new AuthenticationResponse(
